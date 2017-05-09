@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title>oopbase.de</title>
+		<link>http://oopbase.de/</link>
+		<description>oopbase.de</description>
+		<copyright>2017</copyright>
+		<pubDate>Mon, 08 May 2017 20:28:13 GMT</pubDate>
+		<lastBuildDate>Mon, 08 May 2017 20:28:13 GMT</lastBuildDate>
+		<item>
+			<title>Auf interne Typen und Member von außen zugreifen</title>
+			<link>http://oopbase.de/posts/expose-internal-types.html</link>
+			<description>oopbase.de</description>
+			<enclosure url="http://oopbase.de/images/expose_internals/title.jpg" length="0" type="image" />
+			<guid>http://oopbase.de/posts/expose-internal-types.html</guid>
+			<pubDate>Mon, 27 Mar 2017 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Durch das &lt;code&gt;internal&lt;/code&gt;-Schlüsselwort kann auf so deklarierte Typen und Member nur von Dateien aus der selben Assembly zugegriffen werden. Wenn man nun aber Unit-Tests für diese Typen und Member schreiben möchte, befindet man sich häufig in einem separaten Testprojekt. Dadurch fehlt die notwendige Zugriffsberechtigung und die zu testende Funktionalität muss ggf. weiter gekapselt werden.&lt;/p&gt;
+&lt;p&gt;Abhilfe schafft dabei das &lt;code&gt;InternalsVisibleTo&lt;/code&gt;-Attribut. Wenn wir also ein Projekt &lt;code&gt;MeinProjekt&lt;/code&gt; haben und zusätzlich ein weiteres Projekt &lt;code&gt;MeinProjekt.Test&lt;/code&gt;, so können wir in der &lt;code&gt;AssemblyInfo.cs&lt;/code&gt; von &lt;code&gt;MeinProjekt&lt;/code&gt; festlegen, dass interne Typen und Member für ein konkretes Projekt von außen zugreifbar sind. Dazu wird der folgende Code in der &lt;code&gt;AssemblyInfo.cs&lt;/code&gt; hinzugefügt:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;[assembly: InternalsVisibleTo("MeinProjekt.Test")]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nun können die internen Typen und Member aus &lt;code&gt;MeinProjekt&lt;/code&gt; direkt in dem &lt;code&gt;MeinProjekt.Test&lt;/code&gt; verwendet werden.&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'oopbase-de';
+    var disqus_identifier = 'expose-internal-types';
+    var disqus_title = 'Auf interne Typen und Member von au&amp;#xDF;en zugreifen';
+    var disqus_url = 'http://oopbase.de/posts/expose-internal-types.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content:encoded>
+		</item>
+		<item>
+			<title>Der F# JSON Type Provider</title>
+			<link>http://oopbase.de/posts/fsharp-jsonprovider.html</link>
+			<description>oopbase.de</description>
+			<enclosure url="http://oopbase.de/images/jsonprovider/title.jpg" length="0" type="image" />
+			<guid>http://oopbase.de/posts/fsharp-jsonprovider.html</guid>
+			<pubDate>Wed, 01 Feb 2017 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Im Laufe seiner Karriere befasst sich jeder Softwareentwickler früher oder später mit der Verarbeitung von JSON- oder XML-Dateien. Das Vorgehen ist dabei immer sehr ähnlich: Man analysiert die Struktur des zu verarbeitenden Dokuments, legt sich passende Model-Klassen an und überführt dann die Daten in die konkreten Objekte.&lt;/p&gt;
+&lt;p&gt;In diesem Artikel möchte ich zeigen, wie man mit dem F# JSON Type Provider die REST-Schnittstelle von dem IT-Magazin &lt;a href="http://www.golem.de/"&gt;Golem&lt;/a&gt; konsumieren kann und warum die Verarbeitung der Daten mit F# so komfortabel ist.&lt;/p&gt;
+&lt;h2 id="die-golem-rest-schnittstelle"&gt;Die Golem REST-Schnittstelle&lt;/h2&gt;
+&lt;p&gt;Die REST-Schnittstelle von Golem bietet eine Vielzahl von Web-Services an, um z.B. Informationen zu den neusten Artikeln zu bekommen oder um in Kategorien nach bestimmten Begriffen zu suchen. Im folgenden Beispiel konzentriere ich mich auf das Anfragen der Neusten- und der Top-Artikel.&lt;/p&gt;
+&lt;p&gt;Die URL-Synopsis zur Anfrage der Artikel sieht wie folgt aus:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ht&lt;span&gt;tp://api.golem.de/api/article/&lt;em&gt;ARTIKELTYP&lt;/em&gt;/limit/?format=resultformat&amp;amp;key=developerkey&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;ht&lt;span&gt;tp://api.golem.de/api/article/&lt;em&gt;ARTIKELTYP&lt;/em&gt;/?format=resultformat&amp;amp;key=developerkey&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Als Artikeltyp wird unterschieden zwischen &lt;em&gt;latest&lt;/em&gt; und &lt;em&gt;top&lt;/em&gt;. Über ein optionales &lt;em&gt;limit&lt;/em&gt; kann festgelegt werden, wie viele Artikel maximal angefragt werden sollen. Als Parameter der Anfrage dienen ein Format, in dem das Ergebnis der Anfrage zurückgegeben werden soll (für das Beispiel also JSON) und ein DeveloperKey. Nach der &lt;a href="http://api.golem.de/apimanage/index.php"&gt;Registrierung bei Golem&lt;/a&gt; bekommt man zwei Developer-Keys zugesendet. Dies sind zum einen ein Test-Key, mit dem beliebig viele Anfragen geschickt werden können und zum anderen ein Personal-Key, mit dem nur eine gewisse Anzahl von Anfragen pro Stunde erlaubt ist. Bei Anfragen mit dem Test-Key werden immer die gleichen Daten angefragt (Lorem ipsum natürlich 😉), jedoch kann man sich so einen Überblick über die zu verarbeitende Struktur des JSON-Dokuments verschaffen.&lt;/p&gt;
+&lt;h2 id="der-f-json-type-provider"&gt;Der F# JSON Type Provider&lt;/h2&gt;
+&lt;p&gt;Über den &lt;a href="http://fsharp.github.io/FSharp.Data/library/JsonProvider.html"&gt;JSON Type Provider&lt;/a&gt; bekommt man einen statisch typisierten Zugriff auf JSON-Dokumente. Dadurch müssen für die Verarbeitung eines JSON-Dokuments keine extra Datenhaltungsklassen angelegt werden, da diese durch den Type Provider implizit zur Verfügung gestellt werden. Der Type Provider bekommt ein Beispieldokument als Eingabe, welches die zu verarbeitende Struktur des JSON-Dokuments beinhaltet. Die passenden Typen werden dann vom Type Provider generiert. Was hier ein wenig wie schwarze Magie klingt, fühlt sich bei erster Verwendung auch tatsächlich so an 😁.&lt;/p&gt;
+&lt;h2 id="f-wrapper-fur-golem-artikel"&gt;F# Wrapper für Golem Artikel&lt;/h2&gt;
+&lt;p&gt;Da jetzt alle nötigen Komponenten bekannt sind, können wir mit der eigentlichen Implementierung loslegen. Als erstes benötigen wir also für den JSON Type Provider die Struktur des JSON-Dokuments, welches wir bei Anfrage der Artikel zurückbekommen. Dafür rufen wir mit unseren Test-Key die folgende URL auf:&lt;/p&gt;
+&lt;p&gt;ht&lt;span&gt;tp://api.golem.de/api/article/latest/?format=json&amp;amp;key=GEHEIMERTESTKEY&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Das Ergebnis der Anfrage sollte dann in etwa so aussehen:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+  "data": [
+    {
+      "articleid": 1,
+      "headline": "Lorem ipsum dolor sit amet consectetuer sadipscing elitr sed",
+      "abstracttext":
+        "Lorem ipsum dolor sit amet, consectetuer sadipscing elitr...",
+      "url": "http:\/\/api.golem.de\/",
+      "date": 123456789,
+      "leadimg": { "url": "http:\/\/api.golem.de\/img\/example_120.png", "height": 90, "width": 120 },
+      "comments": 12,
+      "images": 5
+    }, {
+      "articleid": 1,
+      "headline": "Lorem ipsum dolor sit amet consectetuer sadipscing elitr sed",
+      "abstracttext":
+        "Lorem ipsum dolor sit amet, consectetuer sadipscing elitr...",
+      "url": "http:\/\/api.golem.de\/",
+      "date": 123456789,
+      "leadimg": { "url": "http:\/\/api.golem.de\/img\/example_120.png", "height": 90, "width": 120 },
+      "comments": 12,
+      "images": 5
+    }
+  ],
+  "success": true
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Diesen Inhalt speichern wir nun als &lt;em&gt;article.json&lt;/em&gt; ab.&lt;/p&gt;
+&lt;p&gt;Nun endlich der F# Code: Um typsicher zwischen den Neusten- und den Top-Artikeln unterscheiden zu können, legen wir uns für diesen Fall eine Discriminated Union an. Zusätlich implementieren wir eine Funktion, die einen Union Case dieser Discriminated Union entgegen nimmt und eine entsprechende String-Übersetzung zurückgibt.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-fsharp"&gt;type ArticleType = | Latest | Top 
+
+let asString = function
+    | Latest -&amp;gt; "latest"
+    | Top -&amp;gt; "top"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Anschließend legen wir einen neuen Typ namens &lt;em&gt;Article&lt;/em&gt; an und initialisieren diesen als JSON Provider. Der statische Parameter, der an den JSON Provider übergeben wird, beschreibt den relativen Pfad zur Beispiel-JSON-Datei (In unserem Fall also das heruntergeladene Dokument).&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-fsharp"&gt;type Article = JsonProvider&amp;lt;"article.json"&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nun benötigen wir lediglich die anzufragende URL sowie eine Funktion, welche die Anfragen kapselt.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-fsharp"&gt;let [&amp;lt;Literal&amp;gt;] BaseUrl = "http://api.golem.de/api/"
+let [&amp;lt;Literal&amp;gt;] ArticleUrl = BaseUrl + "article/"
+
+let [&amp;lt;Literal&amp;gt;] RequestSuffix = "/?format=json&amp;amp;key="
+
+let fetchArticles developerKey articleType (limit : option&amp;lt;int&amp;gt;) =
+    let articleTypeAsString = articleType |&amp;gt; asString
+    let url =
+        match limit with
+        | Some data -&amp;gt; ArticleUrl + articleTypeAsString + string(data) + RequestSuffix + developerKey
+        | None -&amp;gt; ArticleUrl + articleTypeAsString + RequestSuffix + developerKey
+    Article.Load url
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Abhängig davon, ob ein &lt;em&gt;limit&lt;/em&gt; für die Artikel gesetzt wurde, wird die anzufragende URL zusammengebaut und anschließend über den Type Provider geladen und zurückgegeben (Für die C# Entwickler: das letzte Statement einer F# Funktion wird automatisch zurückgegeben).&lt;/p&gt;
+&lt;p&gt;Und das war's auch schon. Dies ist der komplette F#-Code, der nötig ist, um Artikel von der golem.de REST-Schnittstelle anzufragen und zu verarbeiten. Eine Beispielverwendung der Funktion zeigt der folgende Screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/jsonprovider/screenshot.png" class="img-fluid" alt="Screenshot"&gt;&lt;/p&gt;
+&lt;p&gt;Wie man sehen kann, wird über die Punktnotation typsicher auf das JSON Objekt zugegriffen. Dafür mussten keine Model-Klassen angelegt werden, da dies vom JSON Provider implizit übernommen wurde. Ähnliche Type Provider gibt es für &lt;a href="http://fsharp.github.io/FSharp.Data/index.html"&gt;CSV-, XML- oder HTML-Dateien&lt;/a&gt;. (Oder auch für &lt;a href="http://pinksquirrellabs.com/post/2014/02/02/The-MineSweeper-Type-Provider.aspx"&gt;MineSweeper&lt;/a&gt;, wenn man denn MineSweeper über die Punktnotation in der IDE via Intellisense spielen möchte 😁)&lt;/p&gt;
+&lt;p&gt;Das komplette Beispiel habe ich &lt;a href="https://github.com/oopbase/fsharp-golem"&gt;bei GitHub hochgeladen&lt;/a&gt;. Bei Fragen oder Anregungen, freue ich mich über eure Kommentare.&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'oopbase-de';
+    var disqus_identifier = 'fsharp-jsonprovider';
+    var disqus_title = 'Der F# JSON Type Provider';
+    var disqus_url = 'http://oopbase.de/posts/fsharp-jsonprovider.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content:encoded>
+		</item>
+		<item>
+			<title>Implementing Pong in a functional manner with Fable</title>
+			<link>http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable.html</link>
+			<description>oopbase.de</description>
+			<enclosure url="http://oopbase.de/images/implementing_pong/title.jpg" length="0" type="image" />
+			<guid>http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable.html</guid>
+			<pubDate>Mon, 26 Dec 2016 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;This post is part of the &lt;a href="https://sergeytihon.wordpress.com/2016/10/23/f-advent-calendar-in-english-2016/"&gt;F# Advent Calendar in English 2016&lt;/a&gt;. Please check out the other posts as well.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For the last few weeks I’ve been playing around with &lt;a href="http://fable.io/"&gt;Fable&lt;/a&gt;.
+As a F# enthusiast who had to deal with a lot of JavaScript code during his studies, I was quite curious what Fable was all about.
+For those of you who don’t know what Fable is, here is a quote from their website:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;Fable brings together the power of the F# compiler and Babel to make JavaScript a true backend for F#.
+It works directly on F# source code, no compilation needed.
+Fable optimizes F# code to generate as clean JavaScript as possible. – (&lt;a href="http://fable.io/"&gt;fable.io&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Beeing motivated by &lt;a href="http://fable.io/samples/mario/index.html"&gt;Super Fable Mario&lt;/a&gt;, I thought creating a simple game myself might be a good way to start with Fable.
+As you can read by the title, I chose &lt;a href="https://en.wikipedia.org/wiki/Pong"&gt;Pong&lt;/a&gt; as my starting project. So without further ado, let’s start with the actual game.&lt;/p&gt;
+&lt;h2 id="defining-the-model"&gt;Defining the model&lt;/h2&gt;
+&lt;p&gt;When thinking about the Pong game, there are basically three types of models:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Paddles&lt;/strong&gt;: The paddles have got a position and a specific size.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ball&lt;/strong&gt;: The ball has got a position and a size as well. But it has also got speed and an angle.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game status&lt;/strong&gt;: Some kind of storage containing information about the current score.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To implement those models, selecting record types seemed appropriate to me.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/be25233fbba4f9529f20f657ff9bbc88.js"&gt;&lt;/script&gt;
+&lt;p&gt;As you can see in line 9, the ball stores a &lt;em&gt;PongElement&lt;/em&gt; itself, since the ball has almost got the same properties as the paddles.
+The &lt;em&gt;GameStatus&lt;/em&gt; does also contain the boolean flag &lt;em&gt;active&lt;/em&gt; to indicate whether the game is currently running.
+The rest of the model is quite straightforward I guess. Obviously it is straightforward. It is F# code, isn’t it? 😉&lt;/p&gt;
+&lt;h2 id="controlling-the-paddles"&gt;Controlling the paddles&lt;/h2&gt;
+&lt;p&gt;To control a paddle there are only two functions necessary.
+A &lt;em&gt;canMove&lt;/em&gt;-function, to indicate whether a paddle can move in a certain direction, and an actual &lt;em&gt;move&lt;/em&gt;-function to move the paddle.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/915b6d2a2e04d293e9e48eb1a9420ab1.js"&gt;&lt;/script&gt;
+&lt;p&gt;The parameter direction is a tuple &lt;em&gt;(int * int)&lt;/em&gt;. When the first parameter of the tuple is set to 1, we want the paddle to move up.
+When the second parameter of the tuple is set to 1, we want the paddle to move down.
+By using pattern matching we can check which value of the tuple is set to 1.
+Since every object is immutable, we either return a copy of the current paddle with its new Y-position (line 10 and 11) or simply return the input-paddle if no movement is allowed.&lt;/p&gt;
+&lt;h2 id="ball-movement"&gt;Ball movement&lt;/h2&gt;
+&lt;p&gt;As described in the model, the ball has got some speed value and an angle it is flying with. Using simple trigonometry, a function to move the ball may look as follows.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/1c36805fa455a95a206574b08749b71c.js"&gt;&lt;/script&gt;
+&lt;p&gt;So everytime the &lt;em&gt;moveBall&lt;/em&gt; function is called, a new instance of the ball record is being returned with a new position and an adjusted speed value.&lt;/p&gt;
+&lt;h2 id="collision-detection"&gt;Collision detection&lt;/h2&gt;
+&lt;p&gt;Before implementing the &lt;em&gt;checkCollision&lt;/em&gt;-function, let’s start visualizing the collision by using a discriminated union.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/10143a718eceff10802913a5411980d4.js"&gt;&lt;/script&gt;
+&lt;p&gt;This discriminated union describes the whole collision system of the game:
+There can be no collision (&lt;strong&gt;None&lt;/strong&gt;), the &lt;strong&gt;Top&lt;/strong&gt; or &lt;strong&gt;Bottom&lt;/strong&gt; of the canvas may be hit, the &lt;strong&gt;Left&lt;/strong&gt; or &lt;strong&gt;Right&lt;/strong&gt; part of the canvas may be hit (so a player scored) or
+finally a paddle was hit (&lt;strong&gt;LeftPaddle&lt;/strong&gt; &amp;amp; &lt;strong&gt;RightPaddle&lt;/strong&gt;). The following function takes the paddles and the ball as input parameters and returns the found type of collision.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/487bce70485c386edac58a25fb34ced8.js"&gt;&lt;/script&gt;
+&lt;p&gt;With this function, implementing a final collision-function to determine the new angle of the ball is straight forward again. (Thanks to pattern matching)&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/6e6e158c0b63a90a2567f33b7b23a407.js"&gt;&lt;/script&gt;
+&lt;p&gt;When hitting either the top or the bottom of the canvas, we negate the value of the angle (angle of incidence is equal to the angle of reflection).
+When hitting the left or right part of the canvas, we simply keep the input angle, since evaluating the score isn’t done here.
+To actually calculate the angle when a paddle is hit, we use yet another function.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/68807b5d8a187dd2b4b27c1fe8299535.js"&gt;&lt;/script&gt;
+&lt;p&gt;For the calculation, we determine the relative intersection where the ball hit the paddle. Afterwards we normalize that value.
+So for example, if the paddle is 20 pixels high, that value will be between -10 and 10.
+Therefore we can dynamically calculate the angle depending on the impact. As seen in the collision function, the determineAngle
+parameter of this calculation-function is a function itself. Depending on which paddle is hit, we have to use a slightly modified
+calculation of the final angle. As you can see in line 5, we’ve also got a special case we have to deal with. If the right paddle got
+hit in the exact center, so normalizedRelativeIntersectionY = 0. &amp;amp;&amp;amp; hitRightPaddle, we will have to return Pi as the new angle, since
+the radiant value of Pi is equal to 180°.&lt;/p&gt;
+&lt;h2 id="keyboard-interaction"&gt;Keyboard interaction&lt;/h2&gt;
+&lt;p&gt;The whole code you’ve seen until now was plain F# code. To actually interact with the game, we finally need the Fable libraries. Let’s start with the Keyboard.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/db6a398a3513e71a107c783d1a5608d6.js"&gt;&lt;/script&gt;
+&lt;p&gt;The basic idea of the keyboard module is to store the pressed keys in a mutable set.
+By adding an &lt;em&gt;EventListener&lt;/em&gt; for the &lt;em&gt;KeyDown-&lt;/em&gt; and &lt;em&gt;KeyUp-Event&lt;/em&gt; of the HTML document, we can identify
+which key is being pressed. So if the W-Key is pressed, the decimal value 87 (ASCII value for W) is stored into the set. Therefore the
+leftControlsPressed-function will return a tuple containing the values (1, 0).&lt;/p&gt;
+&lt;h2 id="window"&gt;Window&lt;/h2&gt;
+&lt;p&gt;The final part of the game is drawing the elements. We use a HTML canvas element and some encapsulated functions to draw the paddles, the scores and the ball.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/33b7d1ab022d12b92c229ec7adf42bd0.js"&gt;&lt;/script&gt;
+&lt;h2 id="game-loop"&gt;Game loop&lt;/h2&gt;
+&lt;p&gt;Now we have defined everything which is necessary to play the game. We can now initialize our paddles and the ball.
+We also use a recursive &lt;em&gt;update&lt;/em&gt;-function to render the new positions of the elements.&lt;/p&gt;
+&lt;script src="https://gist.github.com/oopbase/febfefade6a11a4a7f2fcf3f7c4bb51d.js"&gt;&lt;/script&gt;
+&lt;p&gt;And that’s it. We can now use Fable to transpile our F# files. We then simply need an HTML-file which contains a canvas and includes the transpiled script.
+Since I forked the Fable repository, the whole code of the game can be found &lt;a href="https://github.com/oopbase/Fable/tree/pong-sample/samples/browser/pong"&gt;right here&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'oopbase-de';
+    var disqus_identifier = 'implementing-pong-in-a-functional-manner-with-fable';
+    var disqus_title = 'Implementing Pong in a functional manner with Fable';
+    var disqus_url = 'http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content:encoded>
+		</item>
+		<item>
+			<title>oopbase reloaded</title>
+			<link>http://oopbase.de/posts/oopbase-reloaded.html</link>
+			<description>oopbase.de</description>
+			<enclosure url="http://oopbase.de/images/oopbase2_0/title.jpg" length="0" type="image" />
+			<guid>http://oopbase.de/posts/oopbase-reloaded.html</guid>
+			<pubDate>Fri, 16 Dec 2016 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Recurring readers may notice that the blog has heavily changed since their last visit.
+They may also see that the blog’s language has switched to english and that this is the only post available right now.&lt;/p&gt;
+&lt;p&gt;Due to a hacker attack I had to reset the server WordPress was running on.
+I could have restored the old WordPress-Database, but I thought that issue might be a good reason to start over again.
+Now writing in english seems to be appropriate as well since there were mainly readers from the US or other english-speaking countries.&lt;/p&gt;
+&lt;p&gt;The first “real” article will be part of the &lt;a href="https://sergeytihon.wordpress.com/2016/10/23/f-advent-calendar-in-english-2016/"&gt;F# Advent Calendar in English&lt;/a&gt; and will be published on December 26. I’m looking forward to seeing you then.&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'oopbase-de';
+    var disqus_identifier = 'oopbase-reloaded';
+    var disqus_title = 'oopbase reloaded';
+    var disqus_url = 'http://oopbase.de/posts/oopbase-reloaded.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content:encoded>
+		</item>
+	</channel>
+</rss>

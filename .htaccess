@@ -1,0 +1,5 @@
+ErrorDocument 404 /notfound.html
+
+RewriteEngine On
+Redirect 301 /implementing-pong-in-a-functional-manner-with-fable/ /posts/implementing-pong-in-a-functional-manner-with-fable.html
+Options -Indexes
