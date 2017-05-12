@@ -4,9 +4,57 @@
 	<id>http://oopbase.de/</id>
 	<title>oopbase.de</title>
 	<rights>2017</rights>
-	<updated>2017-05-08T20:28:13Z</updated>
+	<updated>2017-05-12T11:54:44Z</updated>
 	<logo>http://oopbase.de/images/title.jpg</logo>
 	<subtitle>oopbase.de</subtitle>
+	<entry>
+		<link href="http://oopbase.de/posts/oopbase-auf-github.html" />
+		<link rel="enclosure" type="image" href="http://oopbase.de/images/github_pages/title.jpg" />
+		<id>http://oopbase.de/posts/oopbase-auf-github.html</id>
+		<title>oopbase auf GitHub Pages</title>
+		<updated>2017-05-12T00:00:00Z</updated>
+		<content>&lt;p&gt;Seit der Umstellung von WordPress auf &lt;a href="http://wyam.io"&gt;Wyam&lt;/a&gt; läuft auf meinem vServer lediglich ein Apache HTTP Server. Es existiert keine Datenbank mehr, da Wyam statischen Inhalt generiert. Nun ist die Überlegung durchaus berechtigt, ob man einen kompletten vServer zum Hosten einer statischen Webseite benötigt 😉. Während des Studiums gab es genug Anwendungsfälle, wofür ein vServer tatsächlich ganz nett war. Nun bin ich aber zu dem Entschluss gekommen, meinen vServer zu kündigen und meinen Blog woanders zu Hosten. Meine Domain (oopbase.de) möchte ich aber weiterhin behalten.&lt;/p&gt;
+&lt;h2 id="github-pages"&gt;GitHub Pages&lt;/h2&gt;
+&lt;p&gt;Glücklicherweise lassen sich statische Webseiten kostenlos bei &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; hosten. Dazu legt man lediglich ein neues Repository nach dem folgenden Schema an:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;em&gt;username&lt;/em&gt;.github.io&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Jeglicher Inhalt, der in dieses Repository gepusht wird, ist nun via &lt;em&gt;username&lt;/em&gt;.github.io über den Browser erreichbar. Damit aber eigener statischer Inhalt im Browser gerendert wird, muss zusätzlich eine &lt;em&gt;.nojekyll&lt;/em&gt;-Datei hochgeladen werden. Diese sorgt dafür, dass das Repository nicht mit &lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt; automatisch verarbeitet wird (Man könnte sich natürlich seine statische Webseite auch mit Jekyll generieren lassen, jedoch wollte ich bei Wyam bleiben). Der einzige Nachteil, den man durch das Verzichten auf Jekyll hat, ist, dass man zum Verwalten seiner Webseite nun zwei Repositories benötigt:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ein Respository, in dem die Wyam-Anwendung (der Code) liegt (also das &lt;em&gt;input&lt;/em&gt;-Verzeichnis etc.)&lt;/li&gt;
+&lt;li&gt;Sowie ein Repository (&lt;em&gt;username&lt;/em&gt;.github.io), welches das von Wyam generierte HTML etc. beinhaltet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="funktionieren-eigene-domains"&gt;Funktionieren eigene Domains?&lt;/h2&gt;
+&lt;p&gt;Ja. In den DNS-Einstellungen für eure Domain müssen dafür zwei "A"-Einträge angelegt werden mit den IP's &lt;strong&gt;192.30.252.153&lt;/strong&gt; und &lt;strong&gt;192.30.252.154&lt;/strong&gt;. Dies sind die zwei relevanten GitHub-Server, auf die eure Domain weiterleiten soll. Zuletzt muss nur noch eine &lt;em&gt;CNAME&lt;/em&gt;-Datei in eurem &lt;em&gt;username&lt;/em&gt;.github.io-Repository angelegt werden. In diese schreibt ihr dann eure Domain rein (bei mir also &lt;em&gt;oopbase.de&lt;/em&gt;). Dadurch können die GitHub Server euer Repository - und somit eure Webseite - eindeutig identifizieren.&lt;/p&gt;
+&lt;p&gt;Für mich hat sich dieser Umstieg definitiv gelohnt, da mein vServer zuletzt nichts anderes gemacht hat als GitHub Pages - nämlich statische HTML-Seiten anzeigen.&lt;/p&gt;
+&lt;p&gt;Zur Vollständigkeit halber (und zum eigenen Nachvollziehen) ist &lt;a href="https://github.com/oopbase/blog.oopbase"&gt;hier der Link zum Code-Repository meines Blogs&lt;/a&gt; und &lt;a href="https://github.com/oopbase/oopbase.github.io"&gt;hier der Link zum Repository der generierten Webseite, die ihr gerade betrachtet&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'oopbase-de';
+    var disqus_identifier = 'oopbase-auf-github';
+    var disqus_title = 'oopbase auf GitHub Pages';
+    var disqus_url = 'http://oopbase.de/posts/oopbase-auf-github.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content>
+		<summary>oopbase.de</summary>
+	</entry>
 	<entry>
 		<link href="http://oopbase.de/posts/expose-internal-types.html" />
 		<link rel="enclosure" type="image" href="http://oopbase.de/images/expose_internals/title.jpg" />

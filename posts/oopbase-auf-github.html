@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>oopbase.de - Archive</title>
+        <title>oopbase.de - oopbase auf GitHub Pages</title>
         <meta name="description" content="oopbase.de" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="oopbase.de" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="oopbase.de - Archive" />
+        <meta property="og:title" content="oopbase.de - oopbase auf GitHub Pages" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://oopbase.de/posts" />
+        <meta property="og:url" content="http://oopbase.de/posts/oopbase-auf-github.html" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -85,13 +85,22 @@
                 </nav>
                 
                 <!-- Page Header -->
-                <header class="intro-header" id="intro-header" style="background-image: url(&quot;../images/title.jpg&quot;)">
+                <header class="intro-header" id="intro-header" style="background-image: url(&quot;../images/github_pages/title.jpg&quot;)">
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>Archive</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>oopbase auf GitHub Pages</h1>
+    <div class="meta">        
+Published on Freitag, 12. Mai 2017<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/announcement.html" class="btn btn-default btn-xs">announcement</a>
+                    <a role="button" href="/tags/github-pages.html" class="btn btn-default btn-xs">GitHub Pages</a>
+        </div>     
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -101,41 +110,47 @@
                         <div class="row">
                                 <div id="content" class="col-md-12">
                                         
-        <h1>2017</h1>
-        <hr />
-        <div class="post-list">
-            <a href="/posts/oopbase-auf-github.html">
-                <h3 class="post-title">oopbase auf GitHub Pages</h3>
-            </a>
-            <p class="post-meta">Posted on Freitag, 12. Mai 2017</p>            
-        </div>   
-        <div class="post-list">
-            <a href="/posts/expose-internal-types.html">
-                <h3 class="post-title">Auf interne Typen und Member von au&#xDF;en zugreifen</h3>
-            </a>
-            <p class="post-meta">Posted on Montag, 27. M&#xE4;rz 2017</p>            
-        </div>   
-        <div class="post-list">
-            <a href="/posts/fsharp-jsonprovider.html">
-                <h3 class="post-title">Der F# JSON Type Provider</h3>
-            </a>
-            <p class="post-meta">Posted on Mittwoch, 1. Februar 2017</p>            
-        </div>   
-        <h1>2016</h1>
-        <hr />
-        <div class="post-list">
-            <a href="/posts/implementing-pong-in-a-functional-manner-with-fable.html">
-                <h3 class="post-title">Implementing Pong in a functional manner with Fable</h3>
-            </a>
-            <p class="post-meta">Posted on Montag, 26. Dezember 2016</p>            
-        </div>   
-        <div class="post-list">
-            <a href="/posts/oopbase-reloaded.html">
-                <h3 class="post-title">oopbase reloaded</h3>
-            </a>
-            <p class="post-meta">Posted on Freitag, 16. Dezember 2016</p>            
-        </div>   
 
+<p>Seit der Umstellung von WordPress auf <a href="http://wyam.io">Wyam</a> läuft auf meinem vServer lediglich ein Apache HTTP Server. Es existiert keine Datenbank mehr, da Wyam statischen Inhalt generiert. Nun ist die Überlegung durchaus berechtigt, ob man einen kompletten vServer zum Hosten einer statischen Webseite benötigt 😉. Während des Studiums gab es genug Anwendungsfälle, wofür ein vServer tatsächlich ganz nett war. Nun bin ich aber zu dem Entschluss gekommen, meinen vServer zu kündigen und meinen Blog woanders zu Hosten. Meine Domain (oopbase.de) möchte ich aber weiterhin behalten.</p>
+<h2 id="github-pages">GitHub Pages</h2>
+<p>Glücklicherweise lassen sich statische Webseiten kostenlos bei <a href="https://pages.github.com/">GitHub Pages</a> hosten. Dazu legt man lediglich ein neues Repository nach dem folgenden Schema an:</p>
+<blockquote class="blockquote">
+<p><em>username</em>.github.io</p>
+</blockquote>
+<p>Jeglicher Inhalt, der in dieses Repository gepusht wird, ist nun via <em>username</em>.github.io über den Browser erreichbar. Damit aber eigener statischer Inhalt im Browser gerendert wird, muss zusätzlich eine <em>.nojekyll</em>-Datei hochgeladen werden. Diese sorgt dafür, dass das Repository nicht mit <a href="https://jekyllrb.com/">Jekyll</a> automatisch verarbeitet wird (Man könnte sich natürlich seine statische Webseite auch mit Jekyll generieren lassen, jedoch wollte ich bei Wyam bleiben). Der einzige Nachteil, den man durch das Verzichten auf Jekyll hat, ist, dass man zum Verwalten seiner Webseite nun zwei Repositories benötigt:</p>
+<ul>
+<li>Ein Respository, in dem die Wyam-Anwendung (der Code) liegt (also das <em>input</em>-Verzeichnis etc.)</li>
+<li>Sowie ein Repository (<em>username</em>.github.io), welches das von Wyam generierte HTML etc. beinhaltet</li>
+</ul>
+<h2 id="funktionieren-eigene-domains">Funktionieren eigene Domains?</h2>
+<p>Ja. In den DNS-Einstellungen für eure Domain müssen dafür zwei &quot;A&quot;-Einträge angelegt werden mit den IP's <strong>192.30.252.153</strong> und <strong>192.30.252.154</strong>. Dies sind die zwei relevanten GitHub-Server, auf die eure Domain weiterleiten soll. Zuletzt muss nur noch eine <em>CNAME</em>-Datei in eurem <em>username</em>.github.io-Repository angelegt werden. In diese schreibt ihr dann eure Domain rein (bei mir also <em>oopbase.de</em>). Dadurch können die GitHub Server euer Repository - und somit eure Webseite - eindeutig identifizieren.</p>
+<p>Für mich hat sich dieser Umstieg definitiv gelohnt, da mein vServer zuletzt nichts anderes gemacht hat als GitHub Pages - nämlich statische HTML-Seiten anzeigen.</p>
+<p>Zur Vollständigkeit halber (und zum eigenen Nachvollziehen) ist <a href="https://github.com/oopbase/blog.oopbase">hier der Link zum Code-Repository meines Blogs</a> und <a href="https://github.com/oopbase/oopbase.github.io">hier der Link zum Repository der generierten Webseite, die ihr gerade betrachtet</a>.</p>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'oopbase-de';
+    var disqus_identifier = 'oopbase-auf-github';
+    var disqus_title = 'oopbase auf GitHub Pages';
+    var disqus_url = 'http://oopbase.de/posts/oopbase-auf-github.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>
