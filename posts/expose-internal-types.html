@@ -113,6 +113,15 @@ Published on 27 M&#xE4;rz 2017<br>    </div>
                                         
 
 <p>Durch das <code>internal</code>-Schlüsselwort kann auf so deklarierte Typen und Member nur von Dateien aus der selben Assembly zugegriffen werden. Wenn man nun aber Unit-Tests für diese Typen und Member schreiben möchte, befindet man sich häufig in einem separaten Testprojekt. Dadurch fehlt die notwendige Zugriffsberechtigung und die zu testende Funktionalität muss ggf. weiter gekapselt werden.</p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- PostAd -->
+<p><ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:90px"
+data-ad-client="ca-pub-6705605697246410"
+data-ad-slot="8941596319"></ins></p>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <p>Abhilfe schafft dabei das <code>InternalsVisibleTo</code>-Attribut. Wenn wir also ein Projekt <code>MeinProjekt</code> haben und zusätzlich ein weiteres Projekt <code>MeinProjekt.Test</code>, so können wir in der <code>AssemblyInfo.cs</code> von <code>MeinProjekt</code> festlegen, dass interne Typen und Member für ein konkretes Projekt von außen zugreifbar sind. Dazu wird der folgende Code in der <code>AssemblyInfo.cs</code> hinzugefügt:</p>
 <pre><code class="language-csharp">[assembly: InternalsVisibleTo(&quot;MeinProjekt.Test&quot;)]
 </code></pre>

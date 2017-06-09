@@ -4,7 +4,7 @@
 	<id>http://oopbase.de/</id>
 	<title>oopbase.de</title>
 	<rights>2017</rights>
-	<updated>2017-06-08T11:30:01Z</updated>
+	<updated>2017-06-09T08:18:54Z</updated>
 	<logo>http://oopbase.de/images/title.jpg</logo>
 	<subtitle>oopbase.de</subtitle>
 	<entry>
@@ -14,6 +14,15 @@
 		<title>oopbase auf GitHub Pages</title>
 		<updated>2017-05-12T00:00:00Z</updated>
 		<content>&lt;p&gt;Seit der Umstellung von WordPress auf &lt;a href="http://wyam.io"&gt;Wyam&lt;/a&gt; läuft auf meinem vServer lediglich ein Apache HTTP Server. Es existiert keine Datenbank mehr, da Wyam statischen Inhalt generiert. Nun ist die Überlegung durchaus berechtigt, ob man einen kompletten vServer zum Hosten einer statischen Webseite benötigt 😉. Während des Studiums gab es genug Anwendungsfälle, wofür ein vServer tatsächlich ganz nett war. Nun bin ich aber zu dem Entschluss gekommen, meinen vServer zu kündigen und meinen Blog woanders zu Hosten. Meine Domain (oopbase.de) möchte ich aber weiterhin behalten.&lt;/p&gt;
+&lt;script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"&gt;&lt;/script&gt;
+&lt;!-- PostAd --&gt;
+&lt;p&gt;&lt;ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:90px"
+data-ad-client="ca-pub-6705605697246410"
+data-ad-slot="8941596319"&gt;&lt;/ins&gt;&lt;/p&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
 &lt;h2 id="github-pages"&gt;GitHub Pages&lt;/h2&gt;
 &lt;p&gt;Glücklicherweise lassen sich statische Webseiten kostenlos bei &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; hosten. Dazu legt man lediglich ein neues Repository nach dem folgenden Schema an:&lt;/p&gt;
 &lt;blockquote class="blockquote"&gt;
@@ -38,6 +47,15 @@
 		<title>Auf interne Typen und Member von außen zugreifen</title>
 		<updated>2017-03-27T00:00:00Z</updated>
 		<content>&lt;p&gt;Durch das &lt;code&gt;internal&lt;/code&gt;-Schlüsselwort kann auf so deklarierte Typen und Member nur von Dateien aus der selben Assembly zugegriffen werden. Wenn man nun aber Unit-Tests für diese Typen und Member schreiben möchte, befindet man sich häufig in einem separaten Testprojekt. Dadurch fehlt die notwendige Zugriffsberechtigung und die zu testende Funktionalität muss ggf. weiter gekapselt werden.&lt;/p&gt;
+&lt;script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"&gt;&lt;/script&gt;
+&lt;!-- PostAd --&gt;
+&lt;p&gt;&lt;ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:90px"
+data-ad-client="ca-pub-6705605697246410"
+data-ad-slot="8941596319"&gt;&lt;/ins&gt;&lt;/p&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
 &lt;p&gt;Abhilfe schafft dabei das &lt;code&gt;InternalsVisibleTo&lt;/code&gt;-Attribut. Wenn wir also ein Projekt &lt;code&gt;MeinProjekt&lt;/code&gt; haben und zusätzlich ein weiteres Projekt &lt;code&gt;MeinProjekt.Test&lt;/code&gt;, so können wir in der &lt;code&gt;AssemblyInfo.cs&lt;/code&gt; von &lt;code&gt;MeinProjekt&lt;/code&gt; festlegen, dass interne Typen und Member für ein konkretes Projekt von außen zugreifbar sind. Dazu wird der folgende Code in der &lt;code&gt;AssemblyInfo.cs&lt;/code&gt; hinzugefügt:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-csharp"&gt;[assembly: InternalsVisibleTo(&amp;quot;MeinProjekt.Test&amp;quot;)]
 &lt;/code&gt;&lt;/pre&gt;
@@ -52,6 +70,15 @@
 		<title>Der F# JSON Type Provider</title>
 		<updated>2017-02-01T00:00:00Z</updated>
 		<content>&lt;p&gt;Im Laufe seiner Karriere befasst sich jeder Softwareentwickler früher oder später mit der Verarbeitung von JSON- oder XML-Dateien. Das Vorgehen ist dabei immer sehr ähnlich: Man analysiert die Struktur des zu verarbeitenden Dokuments, legt sich passende Model-Klassen an und überführt dann die Daten in die konkreten Objekte.&lt;/p&gt;
+&lt;script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"&gt;&lt;/script&gt;
+&lt;!-- PostAd --&gt;
+&lt;p&gt;&lt;ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:90px"
+data-ad-client="ca-pub-6705605697246410"
+data-ad-slot="8941596319"&gt;&lt;/ins&gt;&lt;/p&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
 &lt;p&gt;In diesem Artikel möchte ich zeigen, wie man mit dem F# JSON Type Provider die REST-Schnittstelle von dem IT-Magazin &lt;a href="http://www.golem.de/"&gt;Golem&lt;/a&gt; konsumieren kann und warum die Verarbeitung der Daten mit F# so komfortabel ist.&lt;/p&gt;
 &lt;h2 id="die-golem-rest-schnittstelle"&gt;Die Golem REST-Schnittstelle&lt;/h2&gt;
 &lt;p&gt;Die REST-Schnittstelle von Golem bietet eine Vielzahl von Web-Services an, um z.B. Informationen zu den neusten Artikeln zu bekommen oder um in Kategorien nach bestimmten Begriffen zu suchen. Im folgenden Beispiel konzentriere ich mich auf das Anfragen der Neusten- und der Top-Artikel.&lt;/p&gt;
@@ -136,6 +163,15 @@ let fetchArticles developerKey articleType (limit : option&amp;lt;int&amp;gt;) =
 		<content>&lt;blockquote class="blockquote"&gt;
 &lt;p&gt;This post is part of the &lt;a href="https://sergeytihon.wordpress.com/2016/10/23/f-advent-calendar-in-english-2016/"&gt;F# Advent Calendar in English 2016&lt;/a&gt;. Please check out the other posts as well.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"&gt;&lt;/script&gt;
+&lt;!-- PostAd --&gt;
+&lt;p&gt;&lt;ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:90px"
+data-ad-client="ca-pub-6705605697246410"
+data-ad-slot="8941596319"&gt;&lt;/ins&gt;&lt;/p&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
 &lt;p&gt;For the last few weeks I’ve been playing around with &lt;a href="http://fable.io/"&gt;Fable&lt;/a&gt;.
 As a F# enthusiast who had to deal with a lot of JavaScript code during his studies, I was quite curious what Fable was all about.
 For those of you who don’t know what Fable is, here is a quote from their website:&lt;/p&gt;
@@ -217,6 +253,15 @@ Since I forked the Fable repository, the whole code of the game can be found &lt
 		<updated>2016-12-16T00:00:00Z</updated>
 		<content>&lt;p&gt;Recurring readers may notice that the blog has heavily changed since their last visit.
 They may also see that the blog’s language has switched to english and that this is the only post available right now.&lt;/p&gt;
+&lt;script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"&gt;&lt;/script&gt;
+&lt;!-- PostAd --&gt;
+&lt;p&gt;&lt;ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:90px"
+data-ad-client="ca-pub-6705605697246410"
+data-ad-slot="8941596319"&gt;&lt;/ins&gt;&lt;/p&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
 &lt;p&gt;Due to a hacker attack I had to reset the server WordPress was running on.
 I could have restored the old WordPress-Database, but I thought that issue might be a good reason to start over again.
 Now writing in english seems to be appropriate as well since there were mainly readers from the US or other english-speaking countries.&lt;/p&gt;
