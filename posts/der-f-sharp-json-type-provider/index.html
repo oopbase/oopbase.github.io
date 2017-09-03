@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.26" />
+
+  <title>Der F-Sharp JSON Type Provider &middot; oopbase</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/fsharp.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://oopbase.de/img/favicon.ico" type="image/x-icon" />
+
+  
+    <link rel="stylesheet" href="http://oopbase.de/css/my.css">
+  
+  
+    <script src="http://oopbase.de/js/my.js"></script>
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">oopbase</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-tag fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/privacy/"><i class='fa fa-lock fa-fw'></i>Datenschutz</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Impressum</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/oopbase" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://xing.com/profile/Marcel_Schwark2" target="_blank"><i class="fa fa-xing-square fa-fw"></i>Xing</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/oopbase" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/392632/oopbase" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Der F-Sharp JSON Type Provider</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>01 Feb 2017</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/f-sharp">f-sharp</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/typeprovider">TypeProvider</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/api">api</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/json">json</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/golem">golem</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Im Laufe seiner Karriere befasst sich jeder Softwareentwickler früher oder später mit der Verarbeitung von JSON- oder XML-Dateien. Das Vorgehen ist dabei immer sehr ähnlich: Man analysiert die Struktur des zu verarbeitenden Dokuments, legt sich passende Model-Klassen an und überführt dann die Daten in die konkreten Objekte.</p>
+
+<p>In diesem Artikel möchte ich zeigen, wie man mit dem F# JSON Type Provider die REST-Schnittstelle von dem IT-Magazin <a href="http://www.golem.de/">Golem</a> konsumieren kann und warum die Verarbeitung der Daten mit F# so komfortabel ist.</p>
+
+<h2 id="die-golem-rest-schnittstelle">Die Golem REST-Schnittstelle</h2>
+
+<p>Die REST-Schnittstelle von Golem bietet eine Vielzahl von Web-Services an, um z.B. Informationen zu den neusten Artikeln zu bekommen oder um in Kategorien nach bestimmten Begriffen zu suchen. Im folgenden Beispiel konzentriere ich mich auf das Anfragen der Neusten- und der Top-Artikel.</p>
+
+<p>Die URL-Synopsis zur Anfrage der Artikel sieht wie folgt aus:</p>
+
+<ul>
+<li>ht<span>tp://api.golem.de/api/article/<em>ARTIKELTYP</em>/limit/?format=resultformat&amp;key=developerkey</li>
+<li>ht<span>tp://api.golem.de/api/article/<em>ARTIKELTYP</em>/?format=resultformat&amp;key=developerkey</li>
+</ul>
+
+<p>Als Artikeltyp wird unterschieden zwischen <em>latest</em> und <em>top</em>. Über ein optionales <em>limit</em> kann festgelegt werden, wie viele Artikel maximal angefragt werden sollen. Als Parameter der Anfrage dienen ein Format, in dem das Ergebnis der Anfrage zurückgegeben werden soll (für das Beispiel also JSON) und ein DeveloperKey. Nach der <a href="http://api.golem.de/apimanage/index.php">Registrierung bei Golem</a> bekommt man zwei Developer-Keys zugesendet. Dies sind zum einen ein Test-Key, mit dem beliebig viele Anfragen geschickt werden können und zum anderen ein Personal-Key, mit dem nur eine gewisse Anzahl von Anfragen pro Stunde erlaubt ist. Bei Anfragen mit dem Test-Key werden immer die gleichen Daten angefragt (Lorem ipsum natürlich 😉), jedoch kann man sich so einen Überblick über die zu verarbeitende Struktur des JSON-Dokuments verschaffen.</p>
+
+<h2 id="der-f-json-type-provider">Der F# JSON Type Provider</h2>
+
+<p>Über den <a href="http://fsharp.github.io/FSharp.Data/library/JsonProvider.html">JSON Type Provider</a> bekommt man einen statisch typisierten Zugriff auf JSON-Dokumente. Dadurch müssen für die Verarbeitung eines JSON-Dokuments keine extra Datenhaltungsklassen angelegt werden, da diese durch den Type Provider implizit zur Verfügung gestellt werden. Der Type Provider bekommt ein Beispieldokument als Eingabe, welches die zu verarbeitende Struktur des JSON-Dokuments beinhaltet. Die passenden Typen werden dann vom Type Provider generiert. Was hier ein wenig wie schwarze Magie klingt, fühlt sich bei erster Verwendung auch tatsächlich so an 😁.</p>
+
+<h2 id="f-wrapper-für-golem-artikel">F# Wrapper für Golem Artikel</h2>
+
+<p>Da jetzt alle nötigen Komponenten bekannt sind, können wir mit der eigentlichen Implementierung loslegen. Als erstes benötigen wir also für den JSON Type Provider die Struktur des JSON-Dokuments, welches wir bei Anfrage der Artikel zurückbekommen. Dafür rufen wir mit unseren Test-Key die folgende URL auf:</p>
+
+<p>ht<span>tp://api.golem.de/api/article/latest/?format=json&amp;key=GEHEIMERTESTKEY</p>
+
+<p>Das Ergebnis der Anfrage sollte dann in etwa so aussehen:</p>
+
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;articleid&quot;: 1,
+      &quot;headline&quot;: &quot;Lorem ipsum dolor sit amet consectetuer sadipscing elitr sed&quot;,
+      &quot;abstracttext&quot;:
+        &quot;Lorem ipsum dolor sit amet, consectetuer sadipscing elitr...&quot;,
+      &quot;url&quot;: &quot;http:\/\/api.golem.de\/&quot;,
+      &quot;date&quot;: 123456789,
+      &quot;leadimg&quot;: { &quot;url&quot;: &quot;http:\/\/api.golem.de\/img\/example_120.png&quot;, &quot;height&quot;: 90, &quot;width&quot;: 120 },
+      &quot;comments&quot;: 12,
+      &quot;images&quot;: 5
+    }, {
+      &quot;articleid&quot;: 1,
+      &quot;headline&quot;: &quot;Lorem ipsum dolor sit amet consectetuer sadipscing elitr sed&quot;,
+      &quot;abstracttext&quot;:
+        &quot;Lorem ipsum dolor sit amet, consectetuer sadipscing elitr...&quot;,
+      &quot;url&quot;: &quot;http:\/\/api.golem.de\/&quot;,
+      &quot;date&quot;: 123456789,
+      &quot;leadimg&quot;: { &quot;url&quot;: &quot;http:\/\/api.golem.de\/img\/example_120.png&quot;, &quot;height&quot;: 90, &quot;width&quot;: 120 },
+      &quot;comments&quot;: 12,
+      &quot;images&quot;: 5
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+
+<p>Diesen Inhalt speichern wir nun als <em>article.json</em> ab.</p>
+
+<p>Nun endlich der F# Code: Um typsicher zwischen den Neusten- und den Top-Artikeln unterscheiden zu können, legen wir uns für diesen Fall eine Discriminated Union an. Zusätlich implementieren wir eine Funktion, die einen Union Case dieser Discriminated Union entgegen nimmt und eine entsprechende String-Übersetzung zurückgibt.</p>
+
+<pre><code class="language-fsharp">type ArticleType = | Latest | Top 
+
+let asString = function
+    | Latest -&gt; &quot;latest&quot;
+    | Top -&gt; &quot;top&quot;
+</code></pre>
+
+<p>Anschließend legen wir einen neuen Typ namens <em>Article</em> an und initialisieren diesen als JSON Provider. Der statische Parameter, der an den JSON Provider übergeben wird, beschreibt den relativen Pfad zur Beispiel-JSON-Datei (In unserem Fall also das heruntergeladene Dokument).</p>
+
+<pre><code class="language-fsharp">type Article = JsonProvider&lt;&quot;article.json&quot;&gt;
+</code></pre>
+
+<p>Nun benötigen wir lediglich die anzufragende URL sowie eine Funktion, welche die Anfragen kapselt.</p>
+
+<pre><code class="language-fsharp">let [&lt;Literal&gt;] BaseUrl = &quot;http://api.golem.de/api/&quot;
+let [&lt;Literal&gt;] ArticleUrl = BaseUrl + &quot;article/&quot;
+
+let [&lt;Literal&gt;] RequestSuffix = &quot;/?format=json&amp;key=&quot;
+
+let fetchArticles developerKey articleType (limit : option&lt;int&gt;) =
+    let articleTypeAsString = articleType |&gt; asString
+    let url =
+        match limit with
+        | Some data -&gt; ArticleUrl + articleTypeAsString + string(data) + RequestSuffix + developerKey
+        | None -&gt; ArticleUrl + articleTypeAsString + RequestSuffix + developerKey
+    Article.Load url
+</code></pre>
+
+<p>Abhängig davon, ob ein <em>limit</em> für die Artikel gesetzt wurde, wird die anzufragende URL zusammengebaut und anschließend über den Type Provider geladen und zurückgegeben (Für die C# Entwickler: das letzte Statement einer F# Funktion wird automatisch zurückgegeben).</p>
+
+<p>Und das war&rsquo;s auch schon. Dies ist der komplette F#-Code, der nötig ist, um Artikel von der golem.de REST-Schnittstelle anzufragen und zu verarbeiten. Eine Beispielverwendung der Funktion zeigt der folgende Screenshot:</p>
+
+<p><img src="../images/jsonprovider/screenshot.png" alt="Screenshot" /></p>
+
+<p>Wie man sehen kann, wird über die Punktnotation typsicher auf das JSON Objekt zugegriffen. Dafür mussten keine Model-Klassen angelegt werden, da dies vom JSON Provider implizit übernommen wurde. Ähnliche Type Provider gibt es für <a href="http://fsharp.github.io/FSharp.Data/index.html">CSV-, XML- oder HTML-Dateien</a>. (Oder auch für <a href="http://pinksquirrellabs.com/post/2014/02/02/The-MineSweeper-Type-Provider.aspx">MineSweeper</a>, wenn man denn MineSweeper über die Punktnotation in der IDE via Intellisense spielen möchte 😁)</p>
+
+<p>Das komplette Beispiel habe ich <a href="https://github.com/oopbase/fsharp-golem">bei GitHub hochgeladen</a>. Bei Fragen oder Anregungen, freue ich mich über eure Kommentare.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable/">Implementing Pong in a functional manner with Fable</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://oopbase.de/posts/auf-interne-typen-und-member-von-au%C3%9Fen-zugreifen/">Auf interne Typen und Member von außen zugreifen</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://oopbase.de/posts/auf-interne-typen-und-member-von-au%C3%9Fen-zugreifen/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'oopbase-de';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://oopbase.de/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22701184-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

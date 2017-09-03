@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.26" />
+
+  <title>Implementing Pong in a functional manner with Fable &middot; oopbase</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/fsharp.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://oopbase.de/img/favicon.ico" type="image/x-icon" />
+
+  
+    <link rel="stylesheet" href="http://oopbase.de/css/my.css">
+  
+  
+    <script src="http://oopbase.de/js/my.js"></script>
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">oopbase</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-tag fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/privacy/"><i class='fa fa-lock fa-fw'></i>Datenschutz</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Impressum</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/oopbase" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://xing.com/profile/Marcel_Schwark2" target="_blank"><i class="fa fa-xing-square fa-fw"></i>Xing</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/oopbase" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/392632/oopbase" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Implementing Pong in a functional manner with Fable</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>26 Dec 2016</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/f-sharp">f-sharp</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/fable">fable</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/game">game</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/pong">pong</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<blockquote>
+<p>This post is part of the <a href="https://sergeytihon.wordpress.com/2016/10/23/f-advent-calendar-in-english-2016/">F# Advent Calendar in English 2016</a>. Please check out the other posts as well.</p>
+</blockquote>
+
+<p>For the last few weeks I’ve been playing around with <a href="http://fable.io/">Fable</a>.
+As a F# enthusiast who had to deal with a lot of JavaScript code during his studies, I was quite curious what Fable was all about.
+For those of you who don’t know what Fable is, here is a quote from their website:
+&gt; Fable brings together the power of the F# compiler and Babel to make JavaScript a true backend for F#.
+It works directly on F# source code, no compilation needed.
+Fable optimizes F# code to generate as clean JavaScript as possible. – (<a href="http://fable.io/">fable.io</a>)</p>
+
+<p>Beeing motivated by <a href="http://fable.io/samples/mario/index.html">Super Fable Mario</a>, I thought creating a simple game myself might be a good way to start with Fable.
+As you can read by the title, I chose <a href="https://en.wikipedia.org/wiki/Pong">Pong</a> as my starting project. So without further ado, let’s start with the actual game.</p>
+
+<h2 id="defining-the-model">Defining the model</h2>
+
+<p>When thinking about the Pong game, there are basically three types of models:
+* <strong>Paddles</strong>: The paddles have got a position and a specific size.
+* <strong>Ball</strong>: The ball has got a position and a size as well. But it has also got speed and an angle.
+* <strong>Game status</strong>: Some kind of storage containing information about the current score.</p>
+
+<p>To implement those models, selecting record types seemed appropriate to me.
+<script src="https://gist.github.com/oopbase/be25233fbba4f9529f20f657ff9bbc88.js"></script>
+As you can see in line 9, the ball stores a <em>PongElement</em> itself, since the ball has almost got the same properties as the paddles.
+The <em>GameStatus</em> does also contain the boolean flag <em>active</em> to indicate whether the game is currently running.
+The rest of the model is quite straightforward I guess. Obviously it is straightforward. It is F# code, isn’t it? 😉</p>
+
+<h2 id="controlling-the-paddles">Controlling the paddles</h2>
+
+<p>To control a paddle there are only two functions necessary.
+A <em>canMove</em>-function, to indicate whether a paddle can move in a certain direction, and an actual <em>move</em>-function to move the paddle.
+<script src="https://gist.github.com/oopbase/915b6d2a2e04d293e9e48eb1a9420ab1.js"></script>
+The parameter direction is a tuple *(int * int)*. When the first parameter of the tuple is set to 1, we want the paddle to move up.
+When the second parameter of the tuple is set to 1, we want the paddle to move down.
+By using pattern matching we can check which value of the tuple is set to 1.
+Since every object is immutable, we either return a copy of the current paddle with its new Y-position (line 10 and 11) or simply return the input-paddle if no movement is allowed.</p>
+
+<h2 id="ball-movement">Ball movement</h2>
+
+<p>As described in the model, the ball has got some speed value and an angle it is flying with. Using simple trigonometry, a function to move the ball may look as follows.
+<script src="https://gist.github.com/oopbase/1c36805fa455a95a206574b08749b71c.js"></script>
+So everytime the <em>moveBall</em> function is called, a new instance of the ball record is being returned with a new position and an adjusted speed value.</p>
+
+<h2 id="collision-detection">Collision detection</h2>
+
+<p>Before implementing the <em>checkCollision</em>-function, let’s start visualizing the collision by using a discriminated union.
+<script src="https://gist.github.com/oopbase/10143a718eceff10802913a5411980d4.js"></script>
+This discriminated union describes the whole collision system of the game:
+There can be no collision (<strong>None</strong>), the <strong>Top</strong> or <strong>Bottom</strong> of the canvas may be hit, the <strong>Left</strong> or <strong>Right</strong> part of the canvas may be hit (so a player scored) or
+finally a paddle was hit (<strong>LeftPaddle</strong> &amp; <strong>RightPaddle</strong>). The following function takes the paddles and the ball as input parameters and returns the found type of collision.
+<script src="https://gist.github.com/oopbase/487bce70485c386edac58a25fb34ced8.js"></script>
+With this function, implementing a final collision-function to determine the new angle of the ball is straight forward again. (Thanks to pattern matching)
+<script src="https://gist.github.com/oopbase/6e6e158c0b63a90a2567f33b7b23a407.js"></script>
+When hitting either the top or the bottom of the canvas, we negate the value of the angle (angle of incidence is equal to the angle of reflection).
+When hitting the left or right part of the canvas, we simply keep the input angle, since evaluating the score isn’t done here.
+To actually calculate the angle when a paddle is hit, we use yet another function.
+<script src="https://gist.github.com/oopbase/68807b5d8a187dd2b4b27c1fe8299535.js"></script>
+For the calculation, we determine the relative intersection where the ball hit the paddle. Afterwards we normalize that value.
+So for example, if the paddle is 20 pixels high, that value will be between -10 and 10.
+Therefore we can dynamically calculate the angle depending on the impact. As seen in the collision function, the determineAngle
+parameter of this calculation-function is a function itself. Depending on which paddle is hit, we have to use a slightly modified
+calculation of the final angle. As you can see in line 5, we’ve also got a special case we have to deal with. If the right paddle got
+hit in the exact center, so normalizedRelativeIntersectionY = 0. &amp;&amp; hitRightPaddle, we will have to return Pi as the new angle, since
+the radiant value of Pi is equal to 180°.</p>
+
+<h2 id="keyboard-interaction">Keyboard interaction</h2>
+
+<p>The whole code you’ve seen until now was plain F# code. To actually interact with the game, we finally need the Fable libraries. Let’s start with the Keyboard.
+<script src="https://gist.github.com/oopbase/db6a398a3513e71a107c783d1a5608d6.js"></script>
+The basic idea of the keyboard module is to store the pressed keys in a mutable set.
+By adding an <em>EventListener</em> for the <em>KeyDown-</em> and <em>KeyUp-Event</em> of the HTML document, we can identify
+which key is being pressed. So if the W-Key is pressed, the decimal value 87 (ASCII value for W) is stored into the set. Therefore the
+leftControlsPressed-function will return a tuple containing the values (1, 0).</p>
+
+<h2 id="window">Window</h2>
+
+<p>The final part of the game is drawing the elements. We use a HTML canvas element and some encapsulated functions to draw the paddles, the scores and the ball.
+<script src="https://gist.github.com/oopbase/33b7d1ab022d12b92c229ec7adf42bd0.js"></script></p>
+
+<h2 id="game-loop">Game loop</h2>
+
+<p>Now we have defined everything which is necessary to play the game. We can now initialize our paddles and the ball.
+We also use a recursive <em>update</em>-function to render the new positions of the elements.
+<script src="https://gist.github.com/oopbase/febfefade6a11a4a7f2fcf3f7c4bb51d.js"></script>
+And that’s it. We can now use Fable to transpile our F# files. We then simply need an HTML-file which contains a canvas and includes the transpiled script.
+Since I forked the Fable repository, the whole code of the game can be found <a href="https://github.com/oopbase/Fable/tree/pong-sample/samples/browser/pong">right here</a>.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://oopbase.de/posts/oopbase-reloaded/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://oopbase.de/posts/oopbase-reloaded/">oopbase reloaded</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://oopbase.de/posts/der-f-sharp-json-type-provider/">Der F-Sharp JSON Type Provider</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://oopbase.de/posts/der-f-sharp-json-type-provider/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'oopbase-de';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://oopbase.de/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22701184-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

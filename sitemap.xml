@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://oopbase.de/posts/oopbase-auf-github-pages/</loc>
+    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/posts/auf-interne-typen-und-member-von-au%C3%9Fen-zugreifen/</loc>
+    <lastmod>2017-03-27T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/posts/der-f-sharp-json-type-provider/</loc>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable/</loc>
+    <lastmod>2016-12-26T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/posts/oopbase-reloaded/</loc>
+    <lastmod>2016-12-16T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/announcement/</loc>
+    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/api/</loc>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/c-sharp/</loc>
+    <lastmod>2017-03-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/privacy/</loc>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/f-sharp/</loc>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/fable/</loc>
+    <lastmod>2016-12-26T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/game/</loc>
+    <lastmod>2016-12-26T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/github-pages/</loc>
+    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/golem/</loc>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/internal/</loc>
+    <lastmod>2017-03-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/internalsvisibleto/</loc>
+    <lastmod>2017-03-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/json/</loc>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/pong/</loc>
+    <lastmod>2016-12-26T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/post/</loc>
+    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/</loc>
+    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/topics/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/typeprovider/</loc>
+    <lastmod>2017-02-01T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/</loc>
+    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on oopbase</title>
+    <link>http://oopbase.de/post/</link>
+    <description>Recent content in Posts on oopbase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Mon, 22 May 2017 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://oopbase.de/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>oopbase auf GitHub Pages</title>
+      <link>http://oopbase.de/posts/oopbase-auf-github-pages/</link>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/oopbase-auf-github-pages/</guid>
+      <description>Seit der Umstellung von WordPress auf Hugo läuft auf meinem vServer lediglich ein Apache HTTP Server. Es existiert keine Datenbank mehr, da Wyam statischen Inhalt generiert. Nun ist die Überlegung durchaus berechtigt, ob man einen kompletten vServer zum Hosten einer statischen Webseite benötigt 😉. Während des Studiums gab es genug Anwendungsfälle, wofür ein vServer tatsächlich ganz nett war. Nun bin ich aber zu dem Entschluss gekommen, meinen vServer zu kündigen und meinen Blog woanders zu Hosten.</description>
+    </item>
+    
+    <item>
+      <title>Auf interne Typen und Member von außen zugreifen</title>
+      <link>http://oopbase.de/posts/auf-interne-typen-und-member-von-au%C3%9Fen-zugreifen/</link>
+      <pubDate>Mon, 27 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/auf-interne-typen-und-member-von-au%C3%9Fen-zugreifen/</guid>
+      <description>Durch das internal-Schlüsselwort kann auf so deklarierte Typen und Member nur von Dateien aus der selben Assembly zugegriffen werden. Wenn man nun aber Unit-Tests für diese Typen und Member schreiben möchte, befindet man sich häufig in einem separaten Testprojekt. Dadurch fehlt die notwendige Zugriffsberechtigung und die zu testende Funktionalität muss ggf. weiter gekapselt werden.
+Abhilfe schafft dabei das InternalsVisibleTo-Attribut. Wenn wir also ein Projekt MeinProjekt haben und zusätzlich ein weiteres Projekt MeinProjekt.</description>
+    </item>
+    
+    <item>
+      <title>Der F-Sharp JSON Type Provider</title>
+      <link>http://oopbase.de/posts/der-f-sharp-json-type-provider/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/der-f-sharp-json-type-provider/</guid>
+      <description>Im Laufe seiner Karriere befasst sich jeder Softwareentwickler früher oder später mit der Verarbeitung von JSON- oder XML-Dateien. Das Vorgehen ist dabei immer sehr ähnlich: Man analysiert die Struktur des zu verarbeitenden Dokuments, legt sich passende Model-Klassen an und überführt dann die Daten in die konkreten Objekte.
+In diesem Artikel möchte ich zeigen, wie man mit dem F# JSON Type Provider die REST-Schnittstelle von dem IT-Magazin Golem konsumieren kann und warum die Verarbeitung der Daten mit F# so komfortabel ist.</description>
+    </item>
+    
+    <item>
+      <title>Implementing Pong in a functional manner with Fable</title>
+      <link>http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable/</link>
+      <pubDate>Mon, 26 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable/</guid>
+      <description>This post is part of the F# Advent Calendar in English 2016. Please check out the other posts as well.
+ For the last few weeks I’ve been playing around with Fable. As a F# enthusiast who had to deal with a lot of JavaScript code during his studies, I was quite curious what Fable was all about. For those of you who don’t know what Fable is, here is a quote from their website: &amp;gt; Fable brings together the power of the F# compiler and Babel to make JavaScript a true backend for F#.</description>
+    </item>
+    
+    <item>
+      <title>oopbase reloaded</title>
+      <link>http://oopbase.de/posts/oopbase-reloaded/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/oopbase-reloaded/</guid>
+      <description>Recurring readers may notice that the blog has heavily changed since their last visit. They may also see that the blog’s language has switched to english and that this is the only post available right now.
+Due to a hacker attack I had to reset the server WordPress was running on. I could have restored the old WordPress-Database, but I thought that issue might be a good reason to start over again.</description>
+    </item>
+    
+  </channel>
+</rss>

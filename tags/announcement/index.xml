@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Announcement on oopbase</title>
+    <link>http://oopbase.de/tags/announcement/</link>
+    <description>Recent content in Announcement on oopbase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Mon, 22 May 2017 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://oopbase.de/tags/announcement/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>oopbase auf GitHub Pages</title>
+      <link>http://oopbase.de/posts/oopbase-auf-github-pages/</link>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/oopbase-auf-github-pages/</guid>
+      <description>Seit der Umstellung von WordPress auf Hugo läuft auf meinem vServer lediglich ein Apache HTTP Server. Es existiert keine Datenbank mehr, da Wyam statischen Inhalt generiert. Nun ist die Überlegung durchaus berechtigt, ob man einen kompletten vServer zum Hosten einer statischen Webseite benötigt 😉. Während des Studiums gab es genug Anwendungsfälle, wofür ein vServer tatsächlich ganz nett war. Nun bin ich aber zu dem Entschluss gekommen, meinen vServer zu kündigen und meinen Blog woanders zu Hosten.</description>
+    </item>
+    
+    <item>
+      <title>oopbase reloaded</title>
+      <link>http://oopbase.de/posts/oopbase-reloaded/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/oopbase-reloaded/</guid>
+      <description>Recurring readers may notice that the blog has heavily changed since their last visit. They may also see that the blog’s language has switched to english and that this is the only post available right now.
+Due to a hacker attack I had to reset the server WordPress was running on. I could have restored the old WordPress-Database, but I thought that issue might be a good reason to start over again.</description>
+    </item>
+    
+  </channel>
+</rss>

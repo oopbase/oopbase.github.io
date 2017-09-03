@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on oopbase</title>
+    <link>http://oopbase.de/tags/</link>
+    <description>Recent content in Tags on oopbase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Mon, 22 May 2017 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://oopbase.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Announcement</title>
+      <link>http://oopbase.de/tags/announcement/</link>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/announcement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Api</title>
+      <link>http://oopbase.de/tags/api/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C Sharp</title>
+      <link>http://oopbase.de/tags/c-sharp/</link>
+      <pubDate>Mon, 27 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/c-sharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>F Sharp</title>
+      <link>http://oopbase.de/tags/f-sharp/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/f-sharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fable</title>
+      <link>http://oopbase.de/tags/fable/</link>
+      <pubDate>Mon, 26 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/fable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Game</title>
+      <link>http://oopbase.de/tags/game/</link>
+      <pubDate>Mon, 26 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/game/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github Pages</title>
+      <link>http://oopbase.de/tags/github-pages/</link>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/github-pages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golem</title>
+      <link>http://oopbase.de/tags/golem/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/golem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Internal</title>
+      <link>http://oopbase.de/tags/internal/</link>
+      <pubDate>Mon, 27 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/internal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Internalsvisibleto</title>
+      <link>http://oopbase.de/tags/internalsvisibleto/</link>
+      <pubDate>Mon, 27 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/internalsvisibleto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Json</title>
+      <link>http://oopbase.de/tags/json/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pong</title>
+      <link>http://oopbase.de/tags/pong/</link>
+      <pubDate>Mon, 26 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/pong/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typeprovider</title>
+      <link>http://oopbase.de/tags/typeprovider/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/tags/typeprovider/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Internal on oopbase</title>
+    <link>http://oopbase.de/tags/internal/</link>
+    <description>Recent content in Internal on oopbase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Mon, 27 Mar 2017 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://oopbase.de/tags/internal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Auf interne Typen und Member von außen zugreifen</title>
+      <link>http://oopbase.de/posts/auf-interne-typen-und-member-von-au%C3%9Fen-zugreifen/</link>
+      <pubDate>Mon, 27 Mar 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/auf-interne-typen-und-member-von-au%C3%9Fen-zugreifen/</guid>
+      <description>Durch das internal-Schlüsselwort kann auf so deklarierte Typen und Member nur von Dateien aus der selben Assembly zugegriffen werden. Wenn man nun aber Unit-Tests für diese Typen und Member schreiben möchte, befindet man sich häufig in einem separaten Testprojekt. Dadurch fehlt die notwendige Zugriffsberechtigung und die zu testende Funktionalität muss ggf. weiter gekapselt werden.
+Abhilfe schafft dabei das InternalsVisibleTo-Attribut. Wenn wir also ein Projekt MeinProjekt haben und zusätzlich ein weiteres Projekt MeinProjekt.</description>
+    </item>
+    
+  </channel>
+</rss>
