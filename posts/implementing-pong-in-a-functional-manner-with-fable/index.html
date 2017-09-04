@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.26" />
+  <meta name="generator" content="Hugo 0.25.1" />
 
   <title>Implementing Pong in a functional manner with Fable &middot; oopbase</title>
 
@@ -279,10 +279,13 @@ As you can read by the title, I chose <a href="https://en.wikipedia.org/wiki/Pon
 
 <h2 id="defining-the-model">Defining the model</h2>
 
-<p>When thinking about the Pong game, there are basically three types of models:
-* <strong>Paddles</strong>: The paddles have got a position and a specific size.
-* <strong>Ball</strong>: The ball has got a position and a size as well. But it has also got speed and an angle.
-* <strong>Game status</strong>: Some kind of storage containing information about the current score.</p>
+<p>When thinking about the Pong game, there are basically three types of models:</p>
+
+<ul>
+<li><strong>Paddles</strong>: The paddles have got a position and a specific size.</li>
+<li><strong>Ball</strong>: The ball has got a position and a size as well. But it has also got speed and an angle.</li>
+<li><strong>Game status</strong>: Some kind of storage containing information about the current score.</li>
+</ul>
 
 <p>To implement those models, selecting record types seemed appropriate to me.
 <script src="https://gist.github.com/oopbase/be25233fbba4f9529f20f657ff9bbc88.js"></script>

@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.26" />
+  <meta name="generator" content="Hugo 0.25.1" />
 
   <title>oopbase auf GitHub Pages &middot; oopbase</title>
 
@@ -249,7 +249,7 @@
     
       <a class="post-taxonomy-tag" href="http://oopbase.de/tags/announcement">announcement</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/github-pages">GitHub Pages</a>
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/github">github</a>
     
   </div>
   
@@ -259,7 +259,7 @@
 
   
 
-<p>Seit der Umstellung von WordPress auf <a href="https://gohugo.io">Hugo</a> läuft auf meinem vServer lediglich ein Apache HTTP Server. Es existiert keine Datenbank mehr, da Wyam statischen Inhalt generiert. Nun ist die Überlegung durchaus berechtigt, ob man einen kompletten vServer zum Hosten einer statischen Webseite benötigt 😉. Während des Studiums gab es genug Anwendungsfälle, wofür ein vServer tatsächlich ganz nett war. Nun bin ich aber zu dem Entschluss gekommen, meinen vServer zu kündigen und meinen Blog woanders zu Hosten. Meine Domain (oopbase.de) möchte ich aber weiterhin behalten.</p>
+<p>Seit der Umstellung von WordPress auf <a href="https://gohugo.io">Hugo</a> läuft auf meinem vServer lediglich ein Apache HTTP Server. Es existiert keine Datenbank mehr, da Hugo statischen Inhalt generiert. Nun ist die Überlegung durchaus berechtigt, ob man einen kompletten vServer zum Hosten einer statischen Webseite benötigt 😉. Während des Studiums gab es genug Anwendungsfälle, wofür ein vServer tatsächlich ganz nett war. Nun bin ich aber zu dem Entschluss gekommen, meinen vServer zu kündigen und meinen Blog woanders zu Hosten. Meine Domain (oopbase.de) möchte ich aber weiterhin behalten.</p>
 
 <h2 id="github-pages">GitHub Pages</h2>
 
@@ -269,11 +269,11 @@
 <p><em>username</em>.github.io</p>
 </blockquote>
 
-<p>Jeglicher Inhalt, der in dieses Repository gepusht wird, ist nun via <em>username</em>.github.io über den Browser erreichbar. Damit aber eigener statischer Inhalt im Browser gerendert wird, muss zusätzlich eine <em>.nojekyll</em>-Datei hochgeladen werden. Diese sorgt dafür, dass das Repository nicht mit <a href="https://jekyllrb.com/">Jekyll</a> automatisch verarbeitet wird (Man könnte sich natürlich seine statische Webseite auch mit Jekyll generieren lassen, jedoch wollte ich bei Wyam bleiben). Der einzige Nachteil, den man durch das Verzichten auf Jekyll hat, ist, dass man zum Verwalten seiner Webseite nun zwei Repositories benötigt:</p>
+<p>Jeglicher Inhalt, der in dieses Repository gepusht wird, ist nun via <em>username</em>.github.io über den Browser erreichbar. Damit aber eigener statischer Inhalt im Browser gerendert wird, muss zusätzlich eine <em>.nojekyll</em>-Datei hochgeladen werden. Diese sorgt dafür, dass das Repository nicht mit <a href="https://jekyllrb.com/">Jekyll</a> automatisch verarbeitet wird (Man könnte sich natürlich seine statische Webseite auch mit Jekyll generieren lassen, jedoch wollte ich bei Hugo bleiben). Der einzige Nachteil, den man durch das Verzichten auf Jekyll hat, ist, dass man zum Verwalten seiner Webseite nun zwei Repositories benötigt:</p>
 
 <ul>
-<li>Ein Respository, in dem die Wyam-Anwendung (der Code) liegt (also das <em>input</em>-Verzeichnis etc.)</li>
-<li>Sowie ein Repository (<em>username</em>.github.io), welches das von Wyam generierte HTML etc. beinhaltet</li>
+<li>Ein Respository, in dem die Hugo-Anwendung (der Code) liegt (also das <em>input</em>-Verzeichnis etc.)</li>
+<li>Sowie ein Repository (<em>username</em>.github.io), welches das von Hugo generierte HTML etc. beinhaltet</li>
 </ul>
 
 <h2 id="funktionieren-eigene-domains">Funktionieren eigene Domains?</h2>

@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.26" />
+  <meta name="generator" content="Hugo 0.25.1" />
 
   <title>Der F-Sharp JSON Type Provider &middot; oopbase</title>
 
@@ -249,7 +249,7 @@
     
       <a class="post-taxonomy-tag" href="http://oopbase.de/tags/f-sharp">f-sharp</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/typeprovider">TypeProvider</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/typeprovider">typeprovider</a>&nbsp;&#47;
     
       <a class="post-taxonomy-tag" href="http://oopbase.de/tags/api">api</a>&nbsp;&#47;
     
@@ -356,11 +356,9 @@ let fetchArticles developerKey articleType (limit : option&lt;int&gt;) =
 
 <p>Abhängig davon, ob ein <em>limit</em> für die Artikel gesetzt wurde, wird die anzufragende URL zusammengebaut und anschließend über den Type Provider geladen und zurückgegeben (Für die C# Entwickler: das letzte Statement einer F# Funktion wird automatisch zurückgegeben).</p>
 
-<p>Und das war&rsquo;s auch schon. Dies ist der komplette F#-Code, der nötig ist, um Artikel von der golem.de REST-Schnittstelle anzufragen und zu verarbeiten. Eine Beispielverwendung der Funktion zeigt der folgende Screenshot:</p>
+<p>Und das war&rsquo;s auch schon. Dies ist der komplette F#-Code, der nötig ist, um Artikel von der golem.de REST-Schnittstelle anzufragen und zu verarbeiten.</p>
 
-<p><img src="../images/jsonprovider/screenshot.png" alt="Screenshot" /></p>
-
-<p>Wie man sehen kann, wird über die Punktnotation typsicher auf das JSON Objekt zugegriffen. Dafür mussten keine Model-Klassen angelegt werden, da dies vom JSON Provider implizit übernommen wurde. Ähnliche Type Provider gibt es für <a href="http://fsharp.github.io/FSharp.Data/index.html">CSV-, XML- oder HTML-Dateien</a>. (Oder auch für <a href="http://pinksquirrellabs.com/post/2014/02/02/The-MineSweeper-Type-Provider.aspx">MineSweeper</a>, wenn man denn MineSweeper über die Punktnotation in der IDE via Intellisense spielen möchte 😁)</p>
+<p>Über die Punktnotation wird typsicher auf das JSON Objekt zugegriffen. Dafür müssen keine Model-Klassen angelegt werden, da dies vom JSON Provider implizit übernommen wird. Ähnliche Type Provider gibt es für <a href="http://fsharp.github.io/FSharp.Data/index.html">CSV-, XML- oder HTML-Dateien</a>. (Oder auch für <a href="http://pinksquirrellabs.com/post/2014/02/02/The-MineSweeper-Type-Provider.aspx">MineSweeper</a>, wenn man denn MineSweeper über die Punktnotation in der IDE via Intellisense spielen möchte 😁)</p>
 
 <p>Das komplette Beispiel habe ich <a href="https://github.com/oopbase/fsharp-golem">bei GitHub hochgeladen</a>. Bei Fragen oder Anregungen, freue ich mich über eure Kommentare.</p>
 
