@@ -6,10 +6,20 @@
     <description>Recent content on oopbase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Mon, 22 May 2017 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 04 Sep 2017 16:46:34 +0200</lastBuildDate>
     
 	<atom:link href="http://oopbase.de/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Localizing enum values in an enterprise WPF application</title>
+      <link>http://oopbase.de/posts/localizing-enum-values-in-an-enterprise-wpf-application/</link>
+      <pubDate>Mon, 04 Sep 2017 16:46:34 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/localizing-enum-values-in-an-enterprise-wpf-application/</guid>
+      <description>In a WPF application, you often work with collections of data. This data is then visually represented in list-types (ComboBox, ListView etc.) or data grids. A common design approach may look like this:
+ There is a Model, which represents a single data record (E.g. a UserModel, including atomic data like a name etc.). A View, which contains a list-type or a data grid. The collection of UserModel-objects is then bound to the corresponding ItemsSource of the visual element.</description>
+    </item>
     
     <item>
       <title>oopbase auf GitHub Pages</title>

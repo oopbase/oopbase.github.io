@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://oopbase.de/posts/localizing-enum-values-in-an-enterprise-wpf-application/</loc>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oopbase.de/posts/oopbase-auf-github-pages/</loc>
     <lastmod>2017-05-22T00:00:00+02:00</lastmod>
   </url>
@@ -41,12 +46,24 @@
   
   <url>
     <loc>http://oopbase.de/tags/c-sharp/</loc>
-    <lastmod>2017-03-27T00:00:00+02:00</lastmod>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://oopbase.de/privacy/</loc>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/english-post/</loc>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/enum/</loc>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -64,6 +81,12 @@
   <url>
     <loc>http://oopbase.de/tags/game/</loc>
     <lastmod>2016-12-26T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/german-post/</loc>
+    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -109,7 +132,7 @@
   
   <url>
     <loc>http://oopbase.de/post/</loc>
-    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -131,8 +154,20 @@
   </url>
   
   <url>
+    <loc>http://oopbase.de/tags/wpf/</loc>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://oopbase.de/tags/xaml/</loc>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://oopbase.de/</loc>
-    <lastmod>2017-05-22T00:00:00+02:00</lastmod>
+    <lastmod>2017-09-04T16:46:34+02:00</lastmod>
     <priority>0</priority>
   </url>
   

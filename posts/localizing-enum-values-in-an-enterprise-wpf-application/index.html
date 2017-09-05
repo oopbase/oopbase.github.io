@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.25.1" />
+
+  <title>Localizing enum values in an enterprise WPF application &middot; oopbase</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/fsharp.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://oopbase.de/img/favicon.ico" type="image/x-icon" />
+
+  
+    <link rel="stylesheet" href="http://oopbase.de/css/my.css">
+  
+  
+    <script src="http://oopbase.de/js/my.js"></script>
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">oopbase</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-tag fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/privacy/"><i class='fa fa-lock fa-fw'></i>Datenschutz</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Impressum</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/oopbase" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://xing.com/profile/Marcel_Schwark2" target="_blank"><i class="fa fa-xing-square fa-fw"></i>Xing</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/oopbase" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/392632/oopbase" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Localizing enum values in an enterprise WPF application</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>04 Sep 2017</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/english-post">english-post</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/c-sharp">c-sharp</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/wpf">wpf</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/xaml">xaml</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://oopbase.de/tags/enum">enum</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>In a WPF application, you often work with collections of data. This data is then visually represented in list-types (ComboBox, ListView etc.) or data grids. A common design approach may look like this:</p>
+
+<ul>
+<li>There is a <code>Model</code>, which represents a single data record (E.g. a <code>UserModel</code>, including atomic data like a name etc.).</li>
+<li>A <code>View</code>, which contains a list-type or a data grid. The collection of <code>UserModel</code>-objects is then bound to the corresponding <code>ItemsSource</code> of the visual element.</li>
+<li>A <code>ViewModel</code>, which contains a collection of <code>UserModel</code>-objects.</li>
+</ul>
+
+<p>If you are not familiar with this concept, you should read about the <a href="https://msdn.microsoft.com/en-us/library/hh848246.aspx">MVVM-Pattern</a> first, as I will not go into more detail in this article.</p>
+
+<p>To focus more on the problem, lets keep the <code>UserModel</code> as simple as possible.</p>
+
+<pre><code class="language-csharp">public enum Gender
+{
+    Female, Male // Let's not start a gender debate here... ;-)
+}
+
+public class UserModel
+{
+    public Gender Gender { get; }
+    
+    public string Name { get; }
+
+    public UserModel(Gender gender, string name)
+    {
+        this.Gender = gender;
+        this.Name = name;
+    }
+}
+</code></pre>
+
+<p>A <code>UserModel</code> contains a name as string and a gender as enum-type. The required code of our <code>ViewModel</code> holds a list of <code>UserModel</code>-objects inside a generic <code>ObservableCollection&lt;&gt;</code>.</p>
+
+<pre><code class="language-csharp">private ObservableCollection&lt;UserModel&gt; users;
+
+public ObservableCollection&lt;UserModel&gt; Users
+{
+    get =&gt; this.users ?? (this.users = new ObservableCollection&lt;UserModel&gt;
+    {
+        // Some sample data
+        new UserModel(Gender.Female, &quot;Anna&quot;),
+        new UserModel(Gender.Male, &quot;Scott&quot;)
+    });
+    private set
+    {
+        this.users = value;
+        this.OnPropertyChanged(nameof(this.Users));
+    }
+}
+</code></pre>
+
+<p>When this collection is now bound to a data grid, the result will look like this:</p>
+
+<p><center>
+<img src="/img/localize-enum-values/datagrid-without-localization.png" alt="datagrid without localization" />
+</center></p>
+
+<p>When developing a multilingual application, the problem of this approach quickly becomes obvious. In the English-speaking countries there are no problems with the presented data, as the user is correctly shown &ldquo;Male&rdquo; and &ldquo;Female&rdquo; as gender. But what options do we have if we want to localize these enum values with as little code as possible?</p>
+
+<h2 id="solution-1-a-naive-approach">Solution 1: A naive approach</h2>
+
+<p>A naive approach would be to add another property to the <code>UserModel</code> that directly converts the enum value into a string.</p>
+
+<pre><code class="language-csharp">public class UserModel
+{
+    public Gender Gender { get; }
+    
+    public string GenderAsString =&gt;
+        this.Gender == Gender.Female
+            ? LocalizationStrings.GenderFemale;
+            : LocalizationStrings.GenderMale;
+    
+    public string Name { get; }
+
+    public UserModel(Gender gender, string name)
+    {
+        this.Gender = gender;
+        this.Name = name;
+    }
+}
+</code></pre>
+
+<p>If we now manually specify the columns in the XAML file and apply appropriate column-headers including localization, we get the desired result (in German).</p>
+
+<p><center>
+<img src="/img/localize-enum-values/datagrid-with-localization-naive.png" alt="datagrid with localization naive approach" />
+</center></p>
+
+<p>The corresponding XAML-code:</p>
+
+<pre><code class="language-xml">&lt;DataGrid AutoGenerateColumns=&quot;False&quot;
+          ItemsSource=&quot;{Binding Users}&quot;&gt;
+    &lt;DataGrid.Columns&gt;
+        &lt;DataGridTextColumn Binding=&quot;{Binding GenderAsString}&quot;
+                            Header=&quot;{x:Static loc:LocalizationStrings.Gender}&quot; /&gt;
+        &lt;DataGridTextColumn Binding=&quot;{Binding Name}&quot;
+                            Header=&quot;{x:Static loc:LocalizationStrings.Name}&quot; /&gt;
+    &lt;/DataGrid.Columns&gt;
+&lt;/DataGrid&gt;
+</code></pre>
+
+<p>The main disadvantage of this approach is that we no longer use our model class for pure data storage. The property <code>GenderAsString</code> is used exclusively in the <code>View</code>. No business logic will (hopefully) ever access this property. Therefore, having such a &ldquo;redundant&rdquo; property in a model class, is a bad design.</p>
+
+<h2 id="solution-2-encapsulation-of-the-model">Solution 2: Encapsulation of the Model</h2>
+
+<p>Instead of binding directly to a collection of <code>Model</code>-objects, we can bind to a collection another <code>ViewModel</code>, whose task is to encapsulate the model. Thus our <code>UserModel</code> remains a pure data storage class. This <code>ViewModel</code> will hold a private instance of our <code>Model</code> and offers additional <code>View</code>-specific properties. Such a <code>ViewModel</code> could look like this:</p>
+
+<pre><code class="language-csharp">public class UserViewModel
+{
+    private readonly UserModel model;
+
+    public UserViewModel(UserModel model)
+    {
+        this.model = model;
+    }
+
+    public string Name =&gt; this.model.Name;
+
+    public string GenderAsString =&gt;
+        this.model.Gender == Gender.Female
+            ? LocalizationStrings.GenderFemale;
+            : LocalizationStrings.GenderMale;
+}
+</code></pre>
+
+<p>With this approach we get the exact result as shown in solution 1. However, due to encapsulation we have a better separation of concerns. Nevertheless, the same problem exists as in solution 1: The property <code>GenderAsString</code> is used exclusively in the <code>View</code>. Even though the actual purpose of a <code>ViewModel</code> is to create a link between the <code>View</code> and the <code>model</code>, there is actually <em>no other need</em> for our <code>ViewModel</code> to hold this data. So what other options do we have?</p>
+
+<h2 id="solution-3-using-an-ivalueconverter">Solution 3: Using an IValueConverter</h2>
+
+<pre><code class="language-csharp">public class GenderToStringConverter : IValueConverter
+{
+    public object Convert(
+        object value, 
+        Type targetType, 
+        object parameter, 
+        CultureInfo culture)
+    {
+        var result = string.Empty;
+        if (value is Gender gender)
+        {
+            result = gender == Gender.Female 
+                ? LocalizationStrings.GenderFemale;
+                : LocalizationStrings.GenderMale;
+        }
+        return result;
+    }
+    
+    // ConvertBack() is not required for our sample
+    // ...
+}
+</code></pre>
+
+<p>Having such an <code>IValueConverter</code>, which takes the <code>Gender</code>-type as input and returns the corresponding string, will solve our problem as well. Due to this approach, we don&rsquo;t have any unnecessary code in the <code>Model</code> or <code>ViewModel</code>. The <code>Gender</code>-value is bound to the column and the binding gets the required converter as parameter:</p>
+
+<pre><code class="language-xml">&lt;Grid&gt;
+    &lt;Grid.Resources&gt;
+        &lt;local:GenderToStringConverter x:Key=&quot;GenderToStringConverter&quot; /&gt;
+    &lt;/Grid.Resources&gt;
+    &lt;DataGrid AutoGenerateColumns=&quot;False&quot;
+              ItemsSource=&quot;{Binding Users}&quot;&gt;
+        &lt;DataGrid.Columns&gt;
+            &lt;DataGridTextColumn Binding=&quot;{Binding Gender,
+                                                  Converter={StaticResource GenderToStringConverter}}&quot;
+                                Header=&quot;{x:Static loc:LocalizationStrings.Gender}&quot; /&gt;
+            &lt;DataGridTextColumn Binding=&quot;{Binding Name}&quot;
+                                Header=&quot;{x:Static loc:LocalizationStrings.Name}&quot; /&gt;
+        &lt;/DataGrid.Columns&gt;
+    &lt;/DataGrid&gt;
+&lt;/Grid&gt;
+</code></pre>
+
+<p>However, one big limitation remains. We now have an <code>IValueConverter</code> which only accepts values of the type <code>Gender</code>. If you think of enterprise software, you would have to implement the almost identical <code>IValueConverter</code> for each individual enum type. This results in unnecessary code duplication. The final solution therefore consists of a generic solution, which I think is the best approach.</p>
+
+<h2 id="solution-4-using-an-attribute-to-create-generic-ivalueconverter">Solution 4: Using an attribute to create generic IValueConverter</h2>
+
+<p>So we need a generic way to avoid code duplication. Therefore, we introduce a small attribute class, which gets a localization key as constructor parameter:</p>
+
+<pre><code class="language-csharp">[AttributeUsage(AttributeTargets.Field)]
+public class LocalizationKeyAttribute : Attribute
+{
+    public string LocKey { get; }
+
+    public LocalizationKeyAttribute(string locKey)
+    {
+        this.LocKey = locKey;
+    }
+}
+</code></pre>
+
+<p>Now we can decorate our enum values with this attribute.</p>
+
+<pre><code class="language-csharp">public enum Gender
+{
+    [LocalizationKey(&quot;GenderFemale&quot;)]
+    Female,
+
+    [LocalizationKey(&quot;GenderMale&quot;)]
+    Male
+}
+</code></pre>
+
+<p>Through this decoration we can now implement a generic <code>IValueConverter</code> which finds the appropriate localized resource for any enum type and enum value.</p>
+
+<pre><code class="language-csharp">public class LocalizedEnumConverter : IValueConverter
+{
+    public object Convert(
+        object value, 
+        Type targetType, 
+        object parameter, 
+        CultureInfo culture)
+    {
+        var result = string.Empty;
+        if (value is Enum enumValue)
+        {
+            var type = enumValue.GetType();
+            
+            // Look for our 'LocalizationKeyAttribute' in the field's custom attributes
+            var field = type.GetField(enumValue.ToString());
+            var key = string.Empty;
+            if (field.GetCustomAttributes(typeof(LocalizationKeyAttribute), false) is LocalizationKeyAttribute[] attributes
+                &amp;&amp; attributes.Length &gt; 0)
+            {
+                key = attributes[0].LocKey;
+            }
+            
+            result =  string.IsNullOrWhiteSpace(key) 
+                ? string.Empty 
+                : LocStrings.ResourceManager.GetString(key);
+        }
+        return result;
+    }
+
+    // ConvertBack() ...
+}
+</code></pre>
+
+<p>Now we can use this <code>IValueConverter</code> for any enum type, as long as the enum values are decorated with the required attribute.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>The presented solutions illustrate that there are different approaches for localizing enum types depending on the use case. For smaller applications, the implementation from solution 3 may be sufficient for the specific enum type. Anyway you should avoid unnecessary code in the <code>Model</code> and <code>ViewModel</code>. Therefore, solution 1 and solution 2 should be avoided as well. If you are familiar with value converters and custom attributes, I highly recommend choosing the last solution.</p>
+
+<p>Are you using a completely different approach to localize enum values? If so, I would be happy to hear from it in the comments section below. :-)</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://oopbase.de/posts/oopbase-auf-github-pages/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://oopbase.de/posts/oopbase-auf-github-pages/">oopbase auf GitHub Pages</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'oopbase-de';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://oopbase.de/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-22701184-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

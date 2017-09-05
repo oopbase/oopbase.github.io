@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>English Post on oopbase</title>
+    <link>http://oopbase.de/tags/english-post/</link>
+    <description>Recent content in English Post on oopbase</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Mon, 04 Sep 2017 16:46:34 +0200</lastBuildDate>
+    
+	<atom:link href="http://oopbase.de/tags/english-post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Localizing enum values in an enterprise WPF application</title>
+      <link>http://oopbase.de/posts/localizing-enum-values-in-an-enterprise-wpf-application/</link>
+      <pubDate>Mon, 04 Sep 2017 16:46:34 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/localizing-enum-values-in-an-enterprise-wpf-application/</guid>
+      <description>In a WPF application, you often work with collections of data. This data is then visually represented in list-types (ComboBox, ListView etc.) or data grids. A common design approach may look like this:
+ There is a Model, which represents a single data record (E.g. a UserModel, including atomic data like a name etc.). A View, which contains a list-type or a data grid. The collection of UserModel-objects is then bound to the corresponding ItemsSource of the visual element.</description>
+    </item>
+    
+    <item>
+      <title>Implementing Pong in a functional manner with Fable</title>
+      <link>http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable/</link>
+      <pubDate>Mon, 26 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/implementing-pong-in-a-functional-manner-with-fable/</guid>
+      <description>This post is part of the F# Advent Calendar in English 2016. Please check out the other posts as well.
+ For the last few weeks I’ve been playing around with Fable. As a F# enthusiast who had to deal with a lot of JavaScript code during his studies, I was quite curious what Fable was all about. For those of you who don’t know what Fable is, here is a quote from their website: &amp;gt; Fable brings together the power of the F# compiler and Babel to make JavaScript a true backend for F#.</description>
+    </item>
+    
+    <item>
+      <title>oopbase reloaded</title>
+      <link>http://oopbase.de/posts/oopbase-reloaded/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>http://oopbase.de/posts/oopbase-reloaded/</guid>
+      <description>Recurring readers may notice that the blog has heavily changed since their last visit. They may also see that the blog’s language has switched to english and that this is the only post available right now.
+Due to a hacker attack I had to reset the server WordPress was running on. I could have restored the old WordPress-Database, but I thought that issue might be a good reason to start over again.</description>
+    </item>
+    
+  </channel>
+</rss>
